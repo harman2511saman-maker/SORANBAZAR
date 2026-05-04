@@ -145,39 +145,45 @@ const btnMobilePdf = document.getElementById('btn-mobile-pdf');
 if (btnMobilePdf) {
     btnMobilePdf.addEventListener('click', () => {
         const element = document.getElementById('printable-area');
-        const opt = {
-            margin: [5, 5, 5, 5],
-            filename: `SoranBazar_Labels_${new Date().getTime()}.pdf`,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, logging: false },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
 
         btnMobilePdf.disabled = true;
         const originalText = btnMobilePdf.innerHTML;
         btnMobilePdf.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ئامادەکردن...';
 
-        // Add a temporary class to ensure clean rendering
         element.classList.add('pdf-rendering');
         
         try {
-            html2pdf().set(opt).from(element).save().then(() => {
+            // Use html2canvas directly to create an Image, which is much better for mobile sharing
+            html2canvas(element, { scale: 2, useCORS: true, logging: false }).then(canvas => {
                 element.classList.remove('pdf-rendering');
                 btnMobilePdf.disabled = false;
                 btnMobilePdf.innerHTML = originalText;
+                
+                // Convert to Image URL
+                const imgData = canvas.toDataURL('image/png');
+                
+                // Create a download link
+                const link = document.createElement('a');
+                link.download = `SoranBazar_Label_${new Date().getTime()}.png`;
+                link.href = imgData;
+                
+                // Append to body, click, and remove (required for some mobile browsers)
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             }).catch(err => {
-                console.error("PDF Generation Error:", err);
+                console.error("Canvas Generation Error:", err);
                 element.classList.remove('pdf-rendering');
                 btnMobilePdf.disabled = false;
                 btnMobilePdf.innerHTML = originalText;
-                alert('ببورە کێشەیەک ڕوویدا. تکایە دڵنیابە کە لەناو لینکی Netlify دەیکەیتەوە نەک لە ناو کۆمپیوتەرەکەت (file://).');
+                alert('ببورە، کێشەیەک ڕوویدا. تکایە دڵنیابە لەناو وێبگەڕی کرۆم یان سەفاری سایتەکەت کردۆتەوە.');
             });
         } catch(e) {
             console.error(e);
             element.classList.remove('pdf-rendering');
             btnMobilePdf.disabled = false;
             btnMobilePdf.innerHTML = originalText;
-            alert('کێشەیەک ڕوویدا لە کاتی کارپێکردنی کۆدی PDF. تکایە پەڕەکە ڕیفرێش بکەرەوە.');
+            alert('کێشەیەک لە سیستەمەکەدا هەیە.');
         }
     });
 }
