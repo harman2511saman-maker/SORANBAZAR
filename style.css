@@ -124,42 +124,40 @@ body {
 .btn-secondary:hover { background: #cbd5e1; }
 
 .action-icon {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+    width: 40px;
+    height: 35px;
+    border-radius: 8px;
     border: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    background: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
 }
 
-.action-icon.edit-icon { color: var(--primary); }
+.action-icon.edit-icon { 
+    background: #e2e8f0; 
+    color: #1e293b; 
+}
 .action-icon.edit-icon:hover { 
-    background: var(--primary); 
-    color: white; 
-    transform: translateY(-3px) scale(1.05); 
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    background: #cbd5e1; 
 }
 
-.action-icon.delete-icon { color: var(--danger); }
-.action-icon.delete-icon:hover { 
-    background: var(--danger); 
+.action-icon.delete-icon { 
+    background: #ef4444; 
     color: white; 
-    transform: translateY(-3px) scale(1.05); 
-    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+}
+.action-icon.delete-icon:hover { 
+    background: #dc2626; 
 }
 
 .label-actions {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    bottom: 15px;
+    left: 15px;
     display: flex;
-    gap: 12px;
+    gap: 8px;
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 50;
