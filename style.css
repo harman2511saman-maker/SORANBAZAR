@@ -386,15 +386,18 @@ body {
 
 .discount-badge {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 12px;
+    right: 12px;
+    left: auto;
     background: var(--danger);
     color: white;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 800;
     transform: rotate(-5deg);
+    box-shadow: 0 4px 12px rgba(239,68,68,0.35);
+    letter-spacing: 0.5px;
 }
 
 .label-actions {
