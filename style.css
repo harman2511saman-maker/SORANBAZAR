@@ -1,0 +1,512 @@
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --background: #f1f5f9;
+    --surface: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans Arabic', sans-serif;
+    background-color: #cbd5e1; /* Darker background to make the page pop */
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding: 2rem 0;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header Styles */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    background: var(--surface);
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.logo-icon {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.main-header h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+/* Form Section */
+.form-section {
+    background: var(--surface);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    align-items: end;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+    display: block;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-family: inherit;
+}
+
+.btn-group {
+    min-width: 180px;
+}
+
+.w-full { width: 100%; }
+
+/* Button Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+.btn-success { background: var(--success); color: white; }
+.btn-success:hover { background: #059669; transform: translateY(-1px); }
+
+.btn-danger { background: var(--danger); color: white; }
+.btn-danger:hover { background: #dc2626; }
+
+.btn-secondary { background: var(--border); color: var(--text-main); }
+.btn-secondary:hover { background: #cbd5e1; }
+
+.btn-icon {
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+/* Label maker layout is now single-page */
+
+/* Simplified Labels Section - Page Preview */
+.labels-grid-container {
+    padding: 3rem;
+    background: white;
+    border-radius: 4px;
+    min-height: 100vh;
+    box-shadow: 0 0 50px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+/* Sizes */
+.size-a6 { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+.size-a5 { grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); }
+.size-a4 { grid-template-columns: 1fr; }
+
+/* Individual Label Card - Premium Base */
+.label-card {
+    background: var(--surface);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 220px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    overflow: hidden;
+    background-image: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.02) 1px, transparent 0);
+    background-size: 24px 24px;
+}
+
+.label-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* Size Adjustments */
+.size-a5 .label-card { min-height: 320px; padding: 2.5rem; }
+.size-a4 .label-card { min-height: 600px; padding: 5rem; border-width: 3px; }
+
+.market-logo { max-height: 60px; object-fit: contain; }
+.size-a5 .market-logo { max-height: 100px; }
+.size-a4 .market-logo { max-height: 200px; margin-bottom: 2rem; }
+
+.size-a5 .label-item-name { font-size: 2.8rem; font-weight: 800; }
+.size-a4 .label-item-name { font-size: 5rem; margin-bottom: 3rem; letter-spacing: -1px; font-weight: 900; }
+
+.size-a5 .new-price { font-size: 4.5rem; font-weight: 900; }
+.size-a4 .new-price { font-size: 10rem; text-shadow: 0 5px 15px rgba(239, 68, 68, 0.3); font-weight: 900; }
+
+.old-price {
+    font-size: 1.8rem;
+    color: #475569;
+    text-decoration: line-through;
+    text-decoration-thickness: 4px;
+    font-weight: 800;
+    margin-bottom: -5px;
+}
+
+.size-a5 .old-price { font-size: 4rem; text-decoration-thickness: 6px; margin-bottom: -10px; }
+.size-a4 .old-price { font-size: 8.5rem; text-decoration-thickness: 10px; margin-bottom: -20px; }
+
+/* Designs - Refined Themes */
+
+/* 1. Strike Design (Classic/Clean) */
+.design-strike {
+    border-top: 6px solid var(--primary);
+}
+.design-strike .old-price {
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+/* 2. Cross Design (Bold/Aggressive) */
+.design-cross {
+    border: 2px solid #fee2e2;
+}
+.design-cross .old-price-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+}
+.design-cross .old-price-wrapper::before,
+.design-cross .old-price-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--danger);
+    border-radius: 4px;
+    transform: translateY(-50%) rotate(15deg);
+    opacity: 0.8;
+}
+.design-cross .old-price-wrapper::after {
+    transform: translateY(-50%) rotate(-15deg);
+}
+.design-cross .old-price {
+    text-decoration: none !important;
+    color: #64748b;
+    opacity: 0.6;
+}
+.design-cross .new-price { color: #dc2626; }
+
+/* 3. Modern Design (High-End Gradient) */
+.design-modern {
+    background: #fff;
+    border: none;
+    box-shadow: 0 10px 40px -10px rgba(37, 99, 235, 0.15);
+}
+.design-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777);
+}
+.design-modern .discount-badge {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    border-radius: 30px;
+    top: 20px;
+    left: 20px;
+    transform: none;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+}
+.design-modern .new-price {
+    color: #2563eb;
+    font-weight: 900;
+    text-shadow: 2px 2px 0px rgba(37,99,235,0.2), -1px -1px 0px rgba(124,58,237,0.1);
+}
+
+/* 4. Dark Design (Luxury Gold) */
+.design-dark {
+    background: radial-gradient(circle at top right, #1e293b, #0f172a);
+    color: white;
+    border: 1px solid #334155;
+}
+.design-dark .label-item-name { 
+    color: #f8fafc; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.design-dark .label-market { color: #fbbf24; border-color: rgba(251, 191, 36, 0.2); }
+.design-dark .old-price { color: #64748b; opacity: 0.8; }
+.design-dark .new-price { 
+    color: #fbbf24; 
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+.design-dark .discount-badge { 
+    background: #fbbf24; 
+    color: #0f172a;
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+}
+
+.label-logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+.item-code-badge {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.design-dark .item-code-badge {
+    background: rgba(255,255,255,0.1);
+    color: #94a3b8;
+}
+
+.label-item-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Old price styles moved to top */
+
+.new-price {
+    font-size: 2rem;
+    color: var(--danger);
+    font-weight: 800;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.new-price::after {
+    content: 'د.ع';
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--danger);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transform: rotate(-5deg);
+}
+
+.label-actions {
+    position: absolute;
+    bottom: -15px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+/* Empty State */
+.empty-state {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-muted);
+    grid-column: 1 / -1;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+.empty-state.hidden { display: none; }
+
+/* Modals removed for simplified layout */
+
+.hidden {
+    display: none !important;
+}
+
+/* PDF Specific Styles (visible in PDF only) */
+.pdf-only-header, .pdf-only-footer {
+    display: none;
+}
+
+@page {
+    margin: 5mm;
+}
+
+@media print {
+    .no-export, .label-actions, .main-header, .form-section { 
+        display: none !important; 
+    }
+    
+    body { background: white; padding: 0; margin: 0; }
+    .app-container { max-width: 100%; padding: 0; margin: 0; }
+    
+    .labels-grid-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+    }
+    
+    .labels-grid {
+        display: grid;
+        gap: 5mm;
+        padding: 0;
+    }
+
+    .size-a6 { grid-template-columns: repeat(2, 1fr); } /* 4 per A4 page (2x2) */
+    .size-a5 { grid-template-columns: 1fr; } /* 2 per A4 page (vertical) */
+    .size-a4 { grid-template-columns: 1fr; } /* 1 per A4 page */
+
+    /* Fix heights using vh and scale down A4 content to prevent page overflow */
+    .size-a6 .label-card { height: 48vh; min-height: unset; margin: 0; }
+    .size-a5 .label-card { height: 48vh; min-height: unset; margin: 0; }
+    
+    .size-a4 .label-card { 
+        height: 96vh; 
+        min-height: unset; 
+        margin: 0; 
+        padding: 2rem !important; /* Reduced padding to fit content */
+    }
+    
+    /* Scale down A4 massive fonts slightly during print to guarantee fit */
+    .size-a4 .market-logo { max-height: 150px !important; margin-bottom: 1rem !important; }
+    .size-a4 .label-item-name { font-size: 4rem !important; margin-bottom: 1.5rem !important; }
+    .size-a4 .new-price { font-size: 8rem !important; }
+    .size-a4 .old-price { font-size: 6.5rem !important; margin-bottom: -15px !important; }
+
+    .label-card {
+        box-shadow: none !important;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .design-dark { background: #000 !important; color: #fff !important; }
+    .design-dark .new-price { color: #0ea5e9 !important; }
+}
+
+/* Responsive adjustments for Mobile and Tablet preview */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .actions-top {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .input-grid {
+        grid-template-columns: 1fr; /* Stack all form inputs */
+    }
+
+    .form-group.btn-group {
+        align-items: stretch;
+    }
+    
+    .labels-grid-container {
+        padding: 1rem;
+        margin-top: 1rem;
+        box-shadow: none;
+    }
+    
+    .size-a5 { grid-template-columns: 1fr; }
+    
+    /* Dramatically scale down massive previews for mobile screens (does not affect print) */
+    .size-a4 .label-card { padding: 1.5rem; min-height: auto; border-width: 1px; }
+    .size-a4 .label-item-name { font-size: 2.2rem; margin-bottom: 1rem; letter-spacing: normal; }
+    .size-a4 .new-price { font-size: 4rem; }
+    .size-a4 .old-price { font-size: 3.5rem; margin-bottom: -5px; }
+    .size-a4 .market-logo { max-height: 80px; margin-bottom: 1rem; }
+
+    .size-a5 .label-card { padding: 1rem; min-height: auto; }
+    .size-a5 .label-item-name { font-size: 1.8rem; }
+    .size-a5 .new-price { font-size: 3rem; }
+    .size-a5 .old-price { font-size: 2.5rem; margin-bottom: -5px; }
+    .size-a5 .market-logo { max-height: 60px; }
+    
+    .discount-badge {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+}

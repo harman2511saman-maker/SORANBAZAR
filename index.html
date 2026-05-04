@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سیستەمی بەڕێوەبردنی کاڵاکان</title>
+    <!-- Google Fonts for Kurdish (Sorani) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Navigation -->
+        <header class="main-header">
+            <div class="logo-area">
+                <i class="fas fa-tag logo-icon"></i>
+                <h1>دروستکەری لیبڵی داشکاندن</h1>
+            </div>
+            <div class="actions-top">
+                <button id="btn-export-pdf" class="btn btn-success">
+                    <i class="fas fa-print"></i> چاپکردنی هەموو لیبڵەکان
+                </button>
+                <button id="btn-clear-all" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i> سڕینەوەی هەمووی
+                </button>
+            </div>
+        </header>
+
+        <main class="content-area">
+            <!-- Input Form Section -->
+            <section class="form-section shadow">
+                <form id="product-form" class="inline-form">
+                    <input type="hidden" id="edit-index" value="-1">
+                    <div class="input-grid">
+                        <div class="form-group">
+                            <label>ناوی کاڵا</label>
+                            <input type="text" id="item-name" placeholder="بۆ نموونە: تەماتە" required>
+                        </div>
+                        <div class="form-group">
+                            <label>نرخی پێشوو (د.ع)</label>
+                            <input type="number" id="item-old-price" placeholder="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label>نرخی نوێ (د.ع)</label>
+                            <input type="number" id="item-new-price" placeholder="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label>ژمارەی تەبع</label>
+                            <input type="number" id="item-qty" min="1" value="1" required>
+                        </div>
+                        <div class="form-group" style="display: none;">
+                            <label>ناوی فرۆشگا / مارکێت</label>
+                            <input type="text" id="market-name" placeholder="بۆ نموونە: سۆران بازاڕ">
+                        </div>
+                        <div class="form-group">
+                            <label>ستایل</label>
+                            <select id="label-design">
+                                <option value="design-strike">هێڵ بەسەر نرخ (Classic)</option>
+                                <option value="design-cross">زەرب لەسەر نرخ (Cross)</option>
+                                <option value="design-modern">شێوازی مۆدێرن (Badge)</option>
+                                <option value="design-dark">شێوازی تاریک (Premium Dark)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>قەبارە</label>
+                            <select id="label-size">
+                                <option value="size-a6">قەبارەی A6 (بچووک / ٤ لە پەڕەیەک)</option>
+                                <option value="size-a5">قەبارەی A5 (مامناوەند / ٢ لە پەڕەیەک)</option>
+                                <option value="size-a4">قەبارەی A4 (گەورە / پۆستەر)</option>
+                            </select>
+                        </div>
+                        <div class="form-group btn-group">
+                            <label>&nbsp;</label>
+                            <button type="submit" class="btn btn-primary w-full">
+                                <i class="fas fa-plus"></i> زیادکردنی لیبڵ
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Main Labels Section -->
+            <div id="printable-area" class="labels-grid-container">
+                <div id="labels-grid" class="labels-grid">
+                    <!-- Labels will be injected here -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="empty-state">
+                    <i class="fas fa-tags"></i>
+                    <p>هیچ لیبڵێک ئامادە نەکراوە</p>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
