@@ -440,20 +440,17 @@ body {
 }
 
 @media print {
-    .no-export, .label-actions, .main-header, .form-section { 
-        display: none !important; 
+    /* ===== شاردنەوەی هەموو عونسورە دەرەکییەکان ===== */
+    .main-header,
+    .form-section,
+    .actions-top,
+    .label-actions,       /* دوگمەی ئیدیت و سڕینەوە */
+    .no-export,
+    .empty-state {
+        display: none !important;
     }
-}
-
-/* Explicit hide for html2pdf fallback */
-.pdf-rendering .no-export,
-.pdf-rendering .label-actions,
-.pdf-rendering .main-header,
-.pdf-rendering .form-section {
-    display: none !important;
-}
-
-@media print {
+    
+    /* ===== ڕەنگەکان بە تەواوی چاپ بکە ===== */
     body { 
         background: white; 
         padding: 0; 
@@ -461,12 +458,14 @@ body {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
+    
     .app-container { max-width: 100%; padding: 0; margin: 0; }
     
     .labels-grid-container {
         padding: 0 !important;
         margin: 0 !important;
         box-shadow: none !important;
+        min-height: unset !important;
     }
     
     .labels-grid {
@@ -475,38 +474,41 @@ body {
         padding: 0;
     }
 
-    .size-a6 { grid-template-columns: repeat(2, 1fr); } /* 4 per A4 page (2x2) */
-    .size-a5 { grid-template-columns: 1fr; } /* 2 per A4 page (vertical) */
-    .size-a4 { grid-template-columns: 1fr; } /* 1 per A4 page */
+    /* ===== قەبارەکان ===== */
+    .size-a6 { grid-template-columns: repeat(2, 1fr); }
+    .size-a5 { grid-template-columns: 1fr; }
+    .size-a4 { grid-template-columns: 1fr; }
 
-    /* Fix heights using vh and scale down A4 content to prevent page overflow */
     .size-a6 .label-card { height: 48vh; min-height: unset; margin: 0; }
     .size-a5 .label-card { height: 48vh; min-height: unset; margin: 0; }
-    
     .size-a4 .label-card { 
         height: 96vh; 
         min-height: unset; 
         margin: 0; 
-        padding: 2rem !important; /* Reduced padding to fit content */
+        padding: 2rem !important;
     }
     
-    /* Scale down A4 massive fonts slightly during print to guarantee fit */
+    /* ===== قەبارەی نووسین بۆ A4 ===== */
     .size-a4 .market-logo { max-height: 150px !important; margin-bottom: 1rem !important; }
     .size-a4 .label-item-name { font-size: 4rem !important; margin-bottom: 1.5rem !important; }
     .size-a4 .new-price { font-size: 8rem !important; }
     .size-a4 .old-price { font-size: 6.5rem !important; margin-bottom: -15px !important; }
 
+    /* ===== ستایل کارتەکان ===== */
     .label-card {
         box-shadow: none !important;
         border: 1px solid #ddd;
         page-break-inside: avoid;
-        background: white !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
 
-    .design-dark { background: #000 !important; color: #fff !important; }
+    /* ===== Dark Design ===== */
+    .design-dark { background: #0f172a !important; color: #fff !important; }
     .design-dark .new-price { color: #0ea5e9 !important; }
+    .design-dark .label-item-name { color: #f8fafc !important; }
+    .design-dark .old-price { color: #64748b !important; }
+    .design-dark .discount-badge { background: #fbbf24 !important; color: #0f172a !important; }
 }
 
 /* Responsive adjustments for Mobile and Tablet preview */
