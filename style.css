@@ -123,10 +123,46 @@ body {
 .btn-secondary { background: var(--border); color: var(--text-main); }
 .btn-secondary:hover { background: #cbd5e1; }
 
-.btn-icon {
-    padding: 0.5rem;
-    border-radius: 6px;
-    font-size: 1rem;
+.action-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.action-icon.edit-icon { color: var(--primary); }
+.action-icon.edit-icon:hover { 
+    background: var(--primary); 
+    color: white; 
+    transform: translateY(-3px) scale(1.05); 
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+.action-icon.delete-icon { color: var(--danger); }
+.action-icon.delete-icon:hover { 
+    background: var(--danger); 
+    color: white; 
+    transform: translateY(-3px) scale(1.05); 
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+}
+
+.label-actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 50;
 }
 
 /* Label maker layout is now single-page */
@@ -418,7 +454,13 @@ body {
 }
 
 @media print {
-    body { background: white; padding: 0; margin: 0; }
+    body { 
+        background: white; 
+        padding: 0; 
+        margin: 0; 
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
     .app-container { max-width: 100%; padding: 0; margin: 0; }
     
     .labels-grid-container {

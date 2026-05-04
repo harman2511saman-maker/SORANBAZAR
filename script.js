@@ -59,11 +59,11 @@ function renderLabels() {
                     <div class="new-price">${formatCurrency(item.newPrice)}</div>
                 </div>
                 <div class="label-actions no-export" data-html2canvas-ignore="true">
-                    <button class="btn btn-secondary btn-icon" onclick="editItem(${index})">
+                    <button class="action-icon edit-icon" onclick="editItem(${index})" title="دەستکاریکردن">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button class="btn btn-danger btn-icon" onclick="deleteItem(${index})">
-                        <i class="fas fa-trash"></i>
+                    <button class="action-icon delete-icon" onclick="deleteItem(${index})" title="سڕینەوە">
+                        <i class="fas fa-trash-alt"></i>
                     </button>
                 </div>
             `;
