@@ -140,3 +140,30 @@ btnExportPdf.addEventListener('click', () => {
     // Rely on native print dialog which can 'Save as PDF' perfectly
     window.print();
 });
+
+const btnMobilePdf = document.getElementById('btn-mobile-pdf');
+if (btnMobilePdf) {
+    btnMobilePdf.addEventListener('click', () => {
+        const element = document.getElementById('printable-area');
+        const opt = {
+            margin: [5, 5, 5, 5],
+            filename: `SoranBazar_Labels_${new Date().getTime()}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, logging: false },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        btnMobilePdf.disabled = true;
+        const originalText = btnMobilePdf.innerHTML;
+        btnMobilePdf.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ئامادەکردن...';
+
+        // Add a temporary class to ensure clean rendering
+        element.classList.add('pdf-rendering');
+        
+        html2pdf().set(opt).from(element).save().then(() => {
+            element.classList.remove('pdf-rendering');
+            btnMobilePdf.disabled = false;
+            btnMobilePdf.innerHTML = originalText;
+        });
+    });
+}

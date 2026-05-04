@@ -407,7 +407,17 @@ body {
     .no-export, .label-actions, .main-header, .form-section { 
         display: none !important; 
     }
-    
+}
+
+/* Explicit hide for html2pdf fallback */
+.pdf-rendering .no-export,
+.pdf-rendering .label-actions,
+.pdf-rendering .main-header,
+.pdf-rendering .form-section {
+    display: none !important;
+}
+
+@media print {
     body { background: white; padding: 0; margin: 0; }
     .app-container { max-width: 100%; padding: 0; margin: 0; }
     
