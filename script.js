@@ -160,10 +160,24 @@ if (btnMobilePdf) {
         // Add a temporary class to ensure clean rendering
         element.classList.add('pdf-rendering');
         
-        html2pdf().set(opt).from(element).save().then(() => {
+        try {
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.classList.remove('pdf-rendering');
+                btnMobilePdf.disabled = false;
+                btnMobilePdf.innerHTML = originalText;
+            }).catch(err => {
+                console.error("PDF Generation Error:", err);
+                element.classList.remove('pdf-rendering');
+                btnMobilePdf.disabled = false;
+                btnMobilePdf.innerHTML = originalText;
+                alert('ببورە کێشەیەک ڕوویدا. تکایە دڵنیابە کە لەناو لینکی Netlify دەیکەیتەوە نەک لە ناو کۆمپیوتەرەکەت (file://).');
+            });
+        } catch(e) {
+            console.error(e);
             element.classList.remove('pdf-rendering');
             btnMobilePdf.disabled = false;
             btnMobilePdf.innerHTML = originalText;
-        });
+            alert('کێشەیەک ڕوویدا لە کاتی کارپێکردنی کۆدی PDF. تکایە پەڕەکە ڕیفرێش بکەرەوە.');
+        }
     });
 }
